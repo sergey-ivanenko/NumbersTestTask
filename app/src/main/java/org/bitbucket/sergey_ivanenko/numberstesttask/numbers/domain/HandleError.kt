@@ -3,11 +3,11 @@ package org.bitbucket.sergey_ivanenko.numberstesttask.numbers.domain
 import org.bitbucket.sergey_ivanenko.numberstesttask.R
 import org.bitbucket.sergey_ivanenko.numberstesttask.numbers.presentation.ManageResources
 
-interface HandleError {
+interface HandleError<T> {
 
-    fun handle(e: Exception): String
+    fun handle(e: Exception): T
 
-    class Base(private val manageResources: ManageResources) : HandleError {
+    class Base(private val manageResources: ManageResources) : HandleError<String> {
 
         override fun handle(e: Exception): String  = manageResources.string(
             when(e) {
